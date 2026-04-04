@@ -21,8 +21,14 @@ jobs:
     - name: Check PHP version
       run: php -v
 
+    # SonarCloud
     - name: SonarCloud Scan
       uses: SonarSource/sonarcloud-github-action@master
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        
+
+    # Snyk
+    - name: Snyk Scan
+      uses: snyk/actions/php@master
+      env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
