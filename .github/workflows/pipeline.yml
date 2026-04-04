@@ -1,6 +1,9 @@
 name: PHP CI
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   build:
@@ -17,3 +20,9 @@ jobs:
 
     - name: Check PHP version
       run: php -v
+
+    - name: SonarCloud Scan
+      uses: SonarSource/sonarcloud-github-action@master
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        
